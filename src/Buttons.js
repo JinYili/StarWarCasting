@@ -1,8 +1,14 @@
 import React from "react";
+import PageNavi from "./PageNavi";
 
 function Buttons(props) {
-  const { getPerviousUrl, getNextUrl, listLength, pageHandler } = props;
-
+  const {
+    getPerviousUrl,
+    getNextUrl,
+    listLength,
+    pageHandler,
+    currentPage
+  } = props;
   const onClickButton = url => {
     //console.log(url);pageHandler
     pageHandler(url);
@@ -11,7 +17,7 @@ function Buttons(props) {
   const buttonsPrev =
     getPerviousUrl !== null ? (
       <button
-        className="btn-primary px-md-5 mr-5 btn-lg "
+        className="btn-primary px-md-5 btn-lg float-left"
         onClick={() => onClickButton(getPerviousUrl)}
       >
         previous
@@ -20,12 +26,17 @@ function Buttons(props) {
       ""
     );
 
+  const navi = (
+    <PageNavi
+      currentPage={currentPage}
+      onClickButton={onClickButton}
+    ></PageNavi>
+  );
+  let classString = "btn-primary px-md-5 btn-lg";
+  classString += listLength === 0 ? "" : " float-right ";
   const buttonsNext =
     getNextUrl !== null ? (
-      <button
-        className="btn-primary px-md-5 mr-5 btn-lg "
-        onClick={() => onClickButton(getNextUrl)}
-      >
+      <button className={classString} onClick={() => onClickButton(getNextUrl)}>
         {listLength === 0 ? "Load" : "Next"}{" "}
       </button>
     ) : (
@@ -34,7 +45,9 @@ function Buttons(props) {
 
   return (
     <div>
-      {buttonsPrev} {buttonsNext}{" "}
+      {buttonsPrev}
+      {currentPage === 0 ? "" : navi}
+      {buttonsNext}
     </div>
   );
 }
