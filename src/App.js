@@ -20,30 +20,17 @@ function App() {
     return [];
   }
 
-  const headerStyle = {
-    margin: "40px",
-    border: "5px solid pink",
-    color: "green"
-  };
-  const listStyleType = {
-    listStyleType: "none",
-    margin: "10",
-    width: "97%"
-  };
-
   return (
     <div className="App">
-      <h1 style={headerStyle}>STAR WAR CASTING</h1>
+      <h1 className="headerStyle">STAR WAR CASTING</h1>
       {people !== undefined ? (
-        <ul style={listStyleType}>
+        <ul className="listStyleType list-group list-group-flush">
           {people.map(({ name, height, mass, birth_year }) => (
             <li
-              className="border border-success rounded"
+              className="border border-success rounded list-group-item"
               key={name + birth_year}
             >
-              <p>
-                {`${name} is ${height}cm ${mass}KG birth at ${birth_year} year `}
-              </p>
+              <p>{`${name} - ${height}cm - ${mass}KG - birth at ${birth_year}`}</p>
             </li>
           ))}
         </ul>
@@ -52,7 +39,7 @@ function App() {
       )}
       {PreviousUrl !== null ? (
         <button
-          className="btn-primary px-md-5 mr-3 btn-lg "
+          className="btn-primary px-md-5 mr-5 btn-lg "
           onClick={() => setData(fetchPeople(PreviousUrl))}
         >
           previous

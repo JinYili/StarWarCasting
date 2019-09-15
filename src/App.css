@@ -24,20 +24,25 @@
 }
 
 li {
-  font-size: 16px;
-  background-color: rgb(219, 208, 208);
-  margin: 03px;
+  font-size: 24px;
+  background-color: whitesmoke;
+  margin: 3px;
 }
 li:hover {
   font-weight: bold;
   background-color: rgb(224, 109, 14);
 }
+ul {
+  margin-bottom: 15px !important;
+}
+.headerStyle {
+  color: green;
+  font-size: 40px;
+  font-weight: bold;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.listStyleType {
+  list-style-type: none;
+  margin: 10px;
+  width: 97%;
 }
