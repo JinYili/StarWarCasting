@@ -6,13 +6,14 @@ function PageNavi(props) {
   let pages = [];
   for (let i = 1; i < 10; i++) {
     pages[i - 1] = (
-      <a
+      <button
+        href="#"
         className={
           i === currentPage ? "font-weight-bold text-warning" : "cursorPointer"
         }
         onClick={
           i === currentPage
-            ? ""
+            ? null
             : () =>
                 onClickButton(
                   `https://swapi.co/api/people/?format=json&page=${i}`
@@ -22,7 +23,7 @@ function PageNavi(props) {
       >
         {" "}
         {i}
-      </a>
+      </button>
     );
   }
 
