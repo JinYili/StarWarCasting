@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+import Buttons from "./Buttons";
 
 function App() {
   const [NextUrl, setNextUrl] = useState(
@@ -37,27 +38,12 @@ function App() {
       ) : (
         ""
       )}
-      {PreviousUrl !== null ? (
-        <button
-          className="btn-primary px-md-5 mr-5 btn-lg "
-          onClick={() => setData(fetchPeople(PreviousUrl))}
-        >
-          previous
-        </button>
-      ) : (
-        ""
-      )}
-      {NextUrl !== null ? (
-        <button
-          className="btn-primary px-md-5 btn-lg "
-          onClick={() => setData(fetchPeople(NextUrl))}
-        >
-          {" "}
-          {people.length === 0 ? "Load" : "Next"}{" "}
-        </button>
-      ) : (
-        ""
-      )}
+      <Buttons
+        pageHandler={fetchPeople}
+        getNextUrl={NextUrl}
+        getPerviousUrl={PreviousUrl}
+        listLength={people.length}
+      ></Buttons>
     </div>
   );
 }
